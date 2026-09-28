@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gerador de contratos e documentos jurídicos - Advocacia Colombo">
+  <title>Contratos | Advocacia Colombo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">AC</div>
+      <div>
+        <h1>Advocacia Colombo</h1>
+        <p>Gerador de contratos e documentos jurídicos</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <div>
+        <span class="eyebrow">Contrato de honorários</span>
+        <h2>Novo atendimento</h2>
+        <p>Cadastre os contratantes, defina o serviço e os honorários. O sistema será integrado ao modelo oficial já existente no Google Drive.</p>
+      </div>
+      <div class="status-pill" id="backendStatus">Backend não configurado</div>
+    </section>
+
+    <form id="contractForm" novalidate>
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <span class="step">01</span>
+            <h3>Contratantes</h3>
+          </div>
+          <button class="btn btn-secondary" type="button" id="addContractorBtn">+ Adicionar contratante</button>
+        </div>
+
+        <div id="contractorsContainer"></div>
+        <p class="helper">Máximo de 5 contratantes. Procuração e declaração serão geradas individualmente; o contrato será conjunto.</p>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <span class="step">02</span>
+            <h3>Dados do serviço</h3>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <label>
+            Área do Direito
+            <select name="areaDireito" required>
+              <option value="">Selecione</option>
+              <option>Família</option>
+              <option>Cível / Consumidor</option>
+              <option>Trabalhista</option>
+              <option>Penal</option>
+              <option>Sucessões</option>
+              <option>Tributário</option>
+              <option>Outro</option>
+            </select>
+          </label>
+
+          <label>
+            Tipo de serviço / ação
+            <input name="tipoServico" type="text" placeholder="Ex.: Divórcio consensual" required>
+          </label>
+
+          <label>
+            Parte contrária
+            <input name="parteContraria" type="text" placeholder="Opcional">
+          </label>
+        </div>
+
+        <label>
+          Descrição do objeto dos serviços
+          <textarea name="descricaoObjeto" rows="4" placeholder="Descreva com precisão o objeto contratado" required></textarea>
+        </label>
+
+        <div class="grid grid-2">
+          <label>
+            Número do processo
+            <input name="numeroProcesso" type="text" placeholder="Se já houver">
+          </label>
+          <label>
+            Vara / Foro / Comarca
+            <input name="varaForo" type="text" placeholder="Se aplicável">
+          </label>
+        </div>
+
+        <label>
+          Observações gerais do atendimento
+          <textarea name="observacoes" rows="3" placeholder="Opcional"></textarea>
+        </label>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <span class="step">03</span>
+            <h3>Honorários advocatícios</h3>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          <label>
+            Modalidade
+            <select name="modalidade" id="modalidade" required>
+              <option value="">Selecione</option>
+              <option value="fixos">Honorários fixos</option>
+              <option value="exito">Ad êxitum</option>
+              <option value="misto">Misto</option>
+            </select>
+          </label>
+          <label>
+            Forma de pagamento
+            <input name="formaPagamento" type="text" placeholder="PIX, boleto, transferência...">
+          </label>
+          <label>
+            Primeiro vencimento
+            <input name="primeiroVencimento" type="date">
+          </label>
+        </div>
+
+        <div id="fixedFields" class="conditional-block hidden">
+          <div class="grid grid-4">
+            <label>Valor total <input name="valorTotal" type="text" inputmode="decimal" placeholder="R$ 0,00"></label>
+            <label>Entrada <input name="entrada" type="text" inputmode="decimal" placeholder="R$ 0,00"></label>
+            <label>Quantidade de parcelas <input name="parcelas" type="number" min="0" max="48"></label>
+            <label>Valor da parcela <input name="valorParcela" type="text" inputmode="decimal" placeholder="R$ 0,00"></label>
+          </div>
+          <div class="grid grid-2">
+            <label>Dia dos vencimentos seguintes <input name="diaVencimento" type="number" min="1" max="31"></label>
+            <label>Observações dos honorários <input name="observacoesHonorarios" type="text"></label>
+          </div>
+        </div>
+
+        <div id="successFields" class="conditional-block hidden">
+          <div class="grid grid-3">
+            <label>Percentual de êxito <input name="percentualExito" type="number" min="0" max="100" step="0.01" placeholder="30"></label>
+            <label>Base de cálculo <input name="baseCalculoExito" type="text" placeholder="Ex.: proveito econômico obtido"></label>
+            <label>Momento em que será devido <input name="momentoExito" type="text" placeholder="Ex.: após o recebimento"></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <span class="step">04</span>
+            <h3>Documentos e assinatura</h3>
+          </div>
+        </div>
+
+        <div class="documents-grid">
+          <label class="check-card"><input type="checkbox" name="documentos" value="procuração" checked><span>Procuração</span></label>
+          <label class="check-card"><input type="checkbox" name="documentos" value="hipossuficiência" checked><span>Declaração de hipossuficiência</span></label>
+          <label class="check-card"><input type="checkbox" name="documentos" value="contrato" checked><span>Contrato de honorários</span></label>
+        </div>
+
+        <div class="grid grid-2">
+          <label>
+            Cidade da assinatura
+            <input name="cidadeAssinatura" type="text" value="Ibiúna" required>
+          </label>
+          <label>
+            Data do documento
+            <input name="dataDocumento" type="date" required>
+          </label>
+        </div>
+      </section>
+
+      <section class="card preview-card">
+        <div class="section-heading">
+          <div>
+            <span class="step">05</span>
+            <h3>Prévia da qualificação</h3>
+          </div>
+          <button class="btn btn-secondary" type="button" id="previewBtn">Atualizar prévia</button>
+        </div>
+        <div id="qualificationPreview" class="preview-box">Preencha os dados do primeiro contratante para visualizar a qualificação.</div>
+      </section>
+
+      <div class="actions">
+        <button class="btn btn-primary" type="submit">Gerar documentos</button>
+        <button class="btn btn-ghost" type="reset" id="resetBtn">Limpar formulário</button>
+      </div>
+    </form>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <template id="contractorTemplate">
+    <article class="contractor-block">
+      <div class="contractor-header">
+        <div>
+          <span class="contractor-badge"></span>
+          <h4 class="contractor-title"></h4>
+        </div>
+        <button type="button" class="remove-contractor" aria-label="Remover contratante">Remover</button>
+      </div>
+
+      <div class="grid grid-4">
+        <label class="span-2">Nome completo <input data-field="nomeCompleto" type="text" required></label>
+        <label>Nacionalidade <input data-field="nacionalidade" type="text" value="Brasileiro(a)" required></label>
+        <label>Sexo <select data-field="sexo" required><option value="">Selecione</option><option>Masculino</option><option>Feminino</option></select></label>
+      </div>
+
+      <div class="grid grid-4">
+        <label>Estado civil <input data-field="estadoCivil" type="text" required></label>
+        <label>Profissão <input data-field="profissao" type="text" required></label>
+        <label>RG <input data-field="rg" type="text"></label>
+        <label>Órgão expedidor <input data-field="orgaoRg" type="text"></label>
+      </div>
+
+      <div class="grid grid-3">
+        <label>CPF <input data-field="cpf" type="text" inputmode="numeric" required></label>
+        <label>Telefone / WhatsApp <input data-field="telefone" type="tel"></label>
+        <label>E-mail <input data-field="email" type="email"></label>
+      </div>
+
+      <div class="grid grid-4">
+        <label>CEP <input data-field="cep" type="text" inputmode="numeric"></label>
+        <label class="span-2">Logradouro <input data-field="logradouro" type="text"></label>
+        <label>Número <input data-field="numero" type="text"></label>
+      </div>
+
+      <div class="grid grid-4">
+        <label>Complemento <input data-field="complemento" type="text"></label>
+        <label>Bairro <input data-field="bairro" type="text"></label>
+        <label>Cidade <input data-field="cidade" type="text"></label>
+        <label>Estado / UF <input data-field="estado" type="text" maxlength="2"></label>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
