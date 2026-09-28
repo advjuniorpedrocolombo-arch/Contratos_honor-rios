@@ -1,6 +1,6 @@
 const APP_CONFIG = {
   maxContractors: 5,
-  backendUrl: '',
+  backendUrl: 'https://script.google.com/macros/s/AKfycbzQ_30iHNn567Y-nhYjKTXwPoTW7voJLAINDk6Pmjd9NcYSUgcSlGGxf-YvMA92DOKq/exec',
   contractTemplateId: '1Xn-UzT6-35DihvQAiN6qsKHLS6gdI8TFP40hCyoHtxM'
 };
 
@@ -226,12 +226,6 @@ async function submitForm(event) {
 
   updateQualificationPreview();
 
-  if (!APP_CONFIG.backendUrl) {
-    console.log('Payload pronto para integração:', payload);
-    showToast('Interface pronta. Falta conectar o Apps Script para gerar os documentos.', 'error');
-    return;
-  }
-
   const submitButton = form.querySelector('button[type="submit"]');
   const originalText = submitButton.textContent;
   submitButton.disabled = true;
@@ -240,7 +234,7 @@ async function submitForm(event) {
   try {
     const response = await fetch(APP_CONFIG.backendUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
       body: JSON.stringify(payload)
     });
 
