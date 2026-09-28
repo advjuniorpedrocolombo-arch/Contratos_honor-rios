@@ -1,135 +1,1395 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Gerador de contratos e documentos jurídicos - Advocacia Colombo">
-  <title>Contratos | Advocacia Colombo</title>
-  <link rel="stylesheet" href="style-v2.css?v=3">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Gerador de contratos e documentos jurídicos - Advocacia Colombo"
+  >
+
+  <title>
+    Contratos | Advocacia Colombo
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="style-v2.css?v=4"
+  >
+
 </head>
+
+
 <body>
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="profile-card">
-        <div class="profile-photo" aria-label="Foto do advogado"></div>
-        <div>
-          <span class="profile-kicker">Advocacia Colombo</span>
-          <h1>Dr. Junior Pedro Colombo</h1>
-          <p>OAB/SP 510.497</p>
-        </div>
+
+<div class="app-shell">
+
+
+  <!-- MENU LATERAL -->
+
+  <aside class="sidebar">
+
+    <div class="profile-card">
+
+      <div
+        class="profile-photo"
+        aria-label="Foto do advogado"
+      ></div>
+
+      <div>
+
+        <span class="profile-kicker">
+          Advocacia Colombo
+        </span>
+
+        <h1>
+          Dr. Junior Pedro Colombo
+        </h1>
+
+        <p>
+          OAB/SP 510.497
+        </p>
+
       </div>
 
-      <nav class="side-nav" aria-label="Etapas do contrato">
-        <a href="#sec-contratantes" class="nav-item active"><span>01</span><div><strong>Contratantes</strong><small>Dados pessoais</small></div></a>
-        <a href="#sec-servico" class="nav-item"><span>02</span><div><strong>Serviço</strong><small>Objeto e processo</small></div></a>
-        <a href="#sec-honorarios" class="nav-item"><span>03</span><div><strong>Honorários</strong><small>Valores e cobrança</small></div></a>
-        <a href="#sec-documentos" class="nav-item"><span>04</span><div><strong>Documentos</strong><small>Geração e assinatura</small></div></a>
-        <a href="#sec-previa" class="nav-item"><span>05</span><div><strong>Prévia</strong><small>Conferência final</small></div></a>
-      </nav>
-
-      <div class="sidebar-note">
-        <span class="dot"></span>
-        <div><strong>Sistema documental</strong><small>Modelo oficial do escritório</small></div>
-      </div>
-    </aside>
-
-    <div class="workspace">
-      <header class="topbar">
-        <div>
-          <span class="eyebrow">Sistema de documentos jurídicos</span>
-          <h2>Novo contrato de honorários</h2>
-          <p>Cadastro, conferência e geração de documentos em um único fluxo.</p>
-        </div>
-        <div class="top-actions"><div class="status-pill" id="backendStatus">Verificando conexão...</div></div>
-      </header>
-
-      <main class="container">
-        <section class="dashboard-strip">
-          <div class="metric-card"><span>Fluxo atual</span><strong>Novo atendimento</strong><small>Preencha as etapas abaixo</small></div>
-          <div class="metric-card"><span>Contratantes</span><strong>Até 5</strong><small>Contrato conjunto</small></div>
-          <div class="metric-card"><span>Documentos</span><strong>3 tipos</strong><small>Procuração, declaração e contrato</small></div>
-          <div class="metric-card accent-card"><span>Modelo</span><strong>Oficial</strong><small>Google Drive</small></div>
-        </section>
-
-        <section class="hero-panel">
-          <div>
-            <span class="hero-label">Contrato de prestação de serviços advocatícios</span>
-            <h3>Cadastro estruturado do atendimento</h3>
-            <p>Preencha os dados do cliente e do serviço. O sistema utilizará o contrato-modelo oficial do escritório e manterá o documento-base preservado.</p>
-          </div>
-          <div class="hero-seal"><span>AC</span><small>Documentos</small></div>
-        </section>
-
-        <form id="contractForm" novalidate>
-          <section class="card" id="sec-contratantes">
-            <div class="section-heading">
-              <div class="heading-copy"><span class="step">01</span><div><small>ETAPA 01</small><h3>Contratantes</h3><p>Dados pessoais e de qualificação.</p></div></div>
-              <button class="btn btn-secondary" type="button" id="addContractorBtn">+ Adicionar contratante</button>
-            </div>
-            <div id="contractorsContainer"></div>
-            <p class="helper">Máximo de 5 contratantes. Procuração e declaração serão geradas individualmente; o contrato será conjunto.</p>
-          </section>
-
-          <section class="card" id="sec-servico">
-            <div class="section-heading"><div class="heading-copy"><span class="step">02</span><div><small>ETAPA 02</small><h3>Dados do serviço</h3><p>Informações jurídicas e objeto contratado.</p></div></div></div>
-            <div class="grid grid-3">
-              <label>Área do Direito<select name="areaDireito" required><option value="">Selecione</option><option>Família</option><option>Cível / Consumidor</option><option>Trabalhista</option><option>Penal</option><option>Sucessões</option><option>Tributário</option><option>Outro</option></select></label>
-              <label>Tipo de serviço / ação<input name="tipoServico" type="text" placeholder="Ex.: Divórcio consensual" required></label>
-              <label>Parte contrária<input name="parteContraria" type="text" placeholder="Opcional"></label>
-            </div>
-            <label>Descrição do objeto dos serviços<textarea name="descricaoObjeto" rows="4" placeholder="Descreva com precisão o objeto contratado" required></textarea></label>
-            <div class="grid grid-2"><label>Número do processo<input name="numeroProcesso" type="text" placeholder="Se já houver"></label><label>Vara / Foro / Comarca<input name="varaForo" type="text" placeholder="Se aplicável"></label></div>
-            <label>Observações gerais do atendimento<textarea name="observacoes" rows="3" placeholder="Opcional"></textarea></label>
-          </section>
-
-          <section class="card" id="sec-honorarios">
-            <div class="section-heading"><div class="heading-copy"><span class="step">03</span><div><small>ETAPA 03</small><h3>Honorários advocatícios</h3><p>Modalidade, valores e vencimentos.</p></div></div></div>
-            <div class="grid grid-3">
-              <label>Modalidade<select name="modalidade" id="modalidade" required><option value="">Selecione</option><option value="fixos">Honorários fixos</option><option value="exito">Ad êxitum</option><option value="misto">Misto</option></select></label>
-              <label>Forma de pagamento<input name="formaPagamento" type="text" placeholder="PIX, boleto, transferência..."></label>
-              <label>Primeiro vencimento<input name="primeiroVencimento" type="date"></label>
-            </div>
-            <div id="fixedFields" class="conditional-block hidden">
-              <div class="grid grid-4"><label>Valor total<input name="valorTotal" type="text" inputmode="decimal" placeholder="R$ 0,00"></label><label>Entrada<input name="entrada" type="text" inputmode="decimal" placeholder="R$ 0,00"></label><label>Quantidade de parcelas<input name="parcelas" type="number" min="0" max="48"></label><label>Valor da parcela<input name="valorParcela" type="text" inputmode="decimal" placeholder="R$ 0,00"></label></div>
-              <div class="grid grid-2"><label>Dia dos vencimentos seguintes<input name="diaVencimento" type="number" min="1" max="31"></label><label>Observações dos honorários<input name="observacoesHonorarios" type="text"></label></div>
-            </div>
-            <div id="successFields" class="conditional-block hidden"><div class="grid grid-3"><label>Percentual de êxito<input name="percentualExito" type="number" min="0" max="100" step="0.01" placeholder="30"></label><label>Base de cálculo<input name="baseCalculoExito" type="text" placeholder="Ex.: proveito econômico obtido"></label><label>Momento em que será devido<input name="momentoExito" type="text" placeholder="Ex.: após o recebimento"></label></div></div>
-          </section>
-
-          <section class="card" id="sec-documentos">
-            <div class="section-heading"><div class="heading-copy"><span class="step">04</span><div><small>ETAPA 04</small><h3>Documentos e assinatura</h3><p>Selecione os documentos que serão produzidos.</p></div></div></div>
-            <div class="documents-grid">
-              <label class="check-card"><input type="checkbox" name="documentos" value="procuração" checked><div><strong>Procuração</strong><small>Individual por contratante</small></div></label>
-              <label class="check-card"><input type="checkbox" name="documentos" value="hipossuficiência" checked><div><strong>Declaração de hipossuficiência</strong><small>Individual por contratante</small></div></label>
-              <label class="check-card"><input type="checkbox" name="documentos" value="contrato" checked><div><strong>Contrato de honorários</strong><small>Documento conjunto</small></div></label>
-            </div>
-            <div class="grid grid-2"><label>Cidade da assinatura<input name="cidadeAssinatura" type="text" value="Ibiúna" required></label><label>Data do documento<input name="dataDocumento" type="date" required></label></div>
-          </section>
-
-          <section class="card preview-card" id="sec-previa">
-            <div class="section-heading"><div class="heading-copy"><span class="step">05</span><div><small>ETAPA 05</small><h3>Prévia da qualificação</h3><p>Conferência antes da geração.</p></div></div><button class="btn btn-secondary" type="button" id="previewBtn">Atualizar prévia</button></div>
-            <div class="document-preview"><div class="preview-ruler"><span></span><span></span><span></span></div><div id="qualificationPreview" class="preview-box">Preencha os dados do primeiro contratante para visualizar a qualificação.</div></div>
-          </section>
-
-          <div class="actions"><div class="action-note"><strong>Pronto para gerar?</strong><small>Confira os dados antes de prosseguir.</small></div><div class="action-buttons"><button class="btn btn-ghost" type="reset" id="resetBtn">Limpar formulário</button><button class="btn btn-primary" type="submit">Gerar documentos</button></div></div>
-        </form>
-      </main>
     </div>
+
+
+    <nav
+      class="side-nav"
+      aria-label="Etapas do contrato"
+    >
+
+      <a
+        href="#sec-contratantes"
+        class="nav-item active"
+      >
+
+        <span>01</span>
+
+        <div>
+
+          <strong>
+            Contratantes
+          </strong>
+
+          <small>
+            Dados pessoais
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="#sec-servico"
+        class="nav-item"
+      >
+
+        <span>02</span>
+
+        <div>
+
+          <strong>
+            Serviço
+          </strong>
+
+          <small>
+            Objeto e processo
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="#sec-honorarios"
+        class="nav-item"
+      >
+
+        <span>03</span>
+
+        <div>
+
+          <strong>
+            Honorários
+          </strong>
+
+          <small>
+            Valores e cobrança
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="#sec-documentos"
+        class="nav-item"
+      >
+
+        <span>04</span>
+
+        <div>
+
+          <strong>
+            Documentos
+          </strong>
+
+          <small>
+            Geração e assinatura
+          </small>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="#sec-previa"
+        class="nav-item"
+      >
+
+        <span>05</span>
+
+        <div>
+
+          <strong>
+            Prévia
+          </strong>
+
+          <small>
+            Conferência final
+          </small>
+
+        </div>
+
+      </a>
+
+    </nav>
+
+
+    <div class="sidebar-note">
+
+      <span class="dot"></span>
+
+      <div>
+
+        <strong>
+          Sistema documental
+        </strong>
+
+        <small>
+          Modelo oficial do escritório
+        </small>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ÁREA PRINCIPAL -->
+
+  <div class="workspace">
+
+
+    <header class="topbar">
+
+      <div>
+
+        <span class="eyebrow">
+          Sistema de documentos jurídicos
+        </span>
+
+        <h2>
+          Novo contrato de honorários
+        </h2>
+
+        <p>
+          Cadastro, conferência e geração de documentos em um único fluxo.
+        </p>
+
+      </div>
+
+
+      <div class="top-actions">
+
+        <div
+          class="status-pill"
+          id="backendStatus"
+        >
+          Verificando conexão...
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <main class="container">
+
+
+      <!-- PAINEL -->
+
+      <section class="dashboard-strip">
+
+        <div class="metric-card">
+
+          <span>
+            Fluxo atual
+          </span>
+
+          <strong>
+            Novo atendimento
+          </strong>
+
+          <small>
+            Preencha as etapas abaixo
+          </small>
+
+        </div>
+
+
+        <div class="metric-card">
+
+          <span>
+            Contratantes
+          </span>
+
+          <strong>
+            Até 5
+          </strong>
+
+          <small>
+            Contrato conjunto
+          </small>
+
+        </div>
+
+
+        <div class="metric-card">
+
+          <span>
+            Documentos
+          </span>
+
+          <strong>
+            3 tipos
+          </strong>
+
+          <small>
+            Procuração, declaração e contrato
+          </small>
+
+        </div>
+
+
+        <div class="metric-card accent-card">
+
+          <span>
+            Modelo
+          </span>
+
+          <strong>
+            Oficial
+          </strong>
+
+          <small>
+            Google Drive
+          </small>
+
+        </div>
+
+      </section>
+
+
+      <!-- HERO -->
+
+      <section class="hero-panel">
+
+        <div>
+
+          <span class="hero-label">
+            Contrato de prestação de serviços advocatícios
+          </span>
+
+          <h3>
+            Cadastro estruturado do atendimento
+          </h3>
+
+          <p>
+            Preencha os dados do cliente e do serviço. O sistema utilizará
+            os modelos oficiais do escritório e manterá os documentos-base
+            preservados.
+          </p>
+
+        </div>
+
+
+        <div class="hero-seal">
+
+          <span>AC</span>
+
+          <small>
+            Documentos
+          </small>
+
+        </div>
+
+      </section>
+
+
+      <form
+        id="contractForm"
+        novalidate
+      >
+
+
+        <!-- CONTRATANTES -->
+
+        <section
+          class="card"
+          id="sec-contratantes"
+        >
+
+          <div class="section-heading">
+
+            <div class="heading-copy">
+
+              <span class="step">
+                01
+              </span>
+
+              <div>
+
+                <small>
+                  ETAPA 01
+                </small>
+
+                <h3>
+                  Contratantes
+                </h3>
+
+                <p>
+                  Dados pessoais e de qualificação.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="btn btn-secondary"
+              type="button"
+              id="addContractorBtn"
+            >
+              + Adicionar contratante
+            </button>
+
+          </div>
+
+
+          <div
+            id="contractorsContainer"
+          ></div>
+
+
+          <p class="helper">
+            Máximo de 5 contratantes. Procuração e declaração de
+            hipossuficiência serão geradas individualmente. O contrato
+            será conjunto.
+          </p>
+
+        </section>
+
+
+        <!-- SERVIÇO -->
+
+        <section
+          class="card"
+          id="sec-servico"
+        >
+
+          <div class="section-heading">
+
+            <div class="heading-copy">
+
+              <span class="step">
+                02
+              </span>
+
+              <div>
+
+                <small>
+                  ETAPA 02
+                </small>
+
+                <h3>
+                  Dados do serviço
+                </h3>
+
+                <p>
+                  Informações jurídicas e objeto contratado.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="grid grid-3">
+
+            <label>
+
+              Área do Direito
+
+              <select
+                name="areaDireito"
+                required
+              >
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option>
+                  Família
+                </option>
+
+                <option>
+                  Cível / Consumidor
+                </option>
+
+                <option>
+                  Trabalhista
+                </option>
+
+                <option>
+                  Penal
+                </option>
+
+                <option>
+                  Sucessões
+                </option>
+
+                <option>
+                  Tributário
+                </option>
+
+                <option>
+                  Outro
+                </option>
+
+              </select>
+
+            </label>
+
+
+            <label>
+
+              Tipo de serviço / ação
+
+              <input
+                name="tipoServico"
+                type="text"
+                placeholder="Ex.: Divórcio consensual"
+                required
+              >
+
+            </label>
+
+
+            <label>
+
+              Parte contrária
+
+              <input
+                name="parteContraria"
+                type="text"
+                placeholder="Opcional"
+              >
+
+            </label>
+
+          </div>
+
+
+          <label>
+
+            Descrição do objeto dos serviços
+
+            <textarea
+              name="descricaoObjeto"
+              rows="5"
+              required
+            ></textarea>
+
+          </label>
+
+
+          <div class="grid grid-2">
+
+            <label>
+
+              Número do processo
+
+              <input
+                name="numeroProcesso"
+                type="text"
+                placeholder="Se já houver"
+              >
+
+            </label>
+
+
+            <label>
+
+              Vara / Foro / Comarca
+
+              <input
+                name="varaForo"
+                type="text"
+                placeholder="Se aplicável"
+              >
+
+            </label>
+
+          </div>
+
+
+          <label>
+
+            Observações gerais do atendimento
+
+            <textarea
+              name="observacoes"
+              rows="3"
+              placeholder="Opcional"
+            ></textarea>
+
+          </label>
+
+        </section>
+
+
+        <!-- HONORÁRIOS -->
+
+        <section
+          class="card"
+          id="sec-honorarios"
+        >
+
+          <div class="section-heading">
+
+            <div class="heading-copy">
+
+              <span class="step">
+                03
+              </span>
+
+              <div>
+
+                <small>
+                  ETAPA 03
+                </small>
+
+                <h3>
+                  Honorários advocatícios
+                </h3>
+
+                <p>
+                  Modalidade, valores e vencimentos.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="grid grid-3">
+
+            <label>
+
+              Modalidade
+
+              <select
+                name="modalidade"
+                id="modalidade"
+                required
+              >
+
+                <option value="">
+                  Selecione
+                </option>
+
+                <option value="fixos">
+                  Honorários fixos
+                </option>
+
+                <option value="exito">
+                  Ad êxitum
+                </option>
+
+                <option value="misto">
+                  Misto
+                </option>
+
+              </select>
+
+            </label>
+
+
+            <label>
+
+              Forma de pagamento
+
+              <input
+                name="formaPagamento"
+                type="text"
+                placeholder="PIX, boleto, transferência..."
+              >
+
+            </label>
+
+
+            <label>
+
+              Primeiro vencimento
+
+              <input
+                name="primeiroVencimento"
+                type="date"
+              >
+
+            </label>
+
+          </div>
+
+
+          <div
+            id="fixedFields"
+            class="conditional-block hidden"
+          >
+
+            <div class="grid grid-4">
+
+              <label>
+
+                Valor total
+
+                <input
+                  name="valorTotal"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="R$ 0,00"
+                >
+
+              </label>
+
+
+              <label>
+
+                Entrada
+
+                <input
+                  name="entrada"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="R$ 0,00"
+                >
+
+              </label>
+
+
+              <label>
+
+                Quantidade de parcelas
+
+                <input
+                  name="parcelas"
+                  type="number"
+                  min="0"
+                  max="48"
+                >
+
+              </label>
+
+
+              <label>
+
+                Valor da parcela
+
+                <input
+                  name="valorParcela"
+                  type="text"
+                  inputmode="numeric"
+                  placeholder="R$ 0,00"
+                >
+
+              </label>
+
+            </div>
+
+
+            <div class="grid grid-2">
+
+              <label>
+
+                Dia dos vencimentos seguintes
+
+                <input
+                  name="diaVencimento"
+                  type="number"
+                  min="1"
+                  max="31"
+                >
+
+              </label>
+
+
+              <label>
+
+                Observações dos honorários
+
+                <input
+                  name="observacoesHonorarios"
+                  type="text"
+                >
+
+              </label>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="successFields"
+            class="conditional-block hidden"
+          >
+
+            <div class="grid grid-3">
+
+              <label>
+
+                Percentual de êxito
+
+                <input
+                  name="percentualExito"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="0.01"
+                  placeholder="30"
+                >
+
+              </label>
+
+
+              <label>
+
+                Base de cálculo
+
+                <input
+                  name="baseCalculoExito"
+                  type="text"
+                  placeholder="Ex.: proveito econômico obtido"
+                >
+
+              </label>
+
+
+              <label>
+
+                Momento em que será devido
+
+                <input
+                  name="momentoExito"
+                  type="text"
+                  placeholder="Ex.: após o recebimento"
+                >
+
+              </label>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- DOCUMENTOS -->
+
+        <section
+          class="card"
+          id="sec-documentos"
+        >
+
+          <div class="section-heading">
+
+            <div class="heading-copy">
+
+              <span class="step">
+                04
+              </span>
+
+              <div>
+
+                <small>
+                  ETAPA 04
+                </small>
+
+                <h3>
+                  Documentos e assinatura
+                </h3>
+
+                <p>
+                  Selecione os documentos que serão produzidos.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="documents-grid">
+
+
+            <label class="check-card">
+
+              <input
+                type="checkbox"
+                name="documentos"
+                value="procuração"
+                checked
+              >
+
+              <div>
+
+                <strong>
+                  Procuração
+                </strong>
+
+                <small>
+                  Individual por contratante
+                </small>
+
+              </div>
+
+            </label>
+
+
+            <label class="check-card">
+
+              <input
+                type="checkbox"
+                name="documentos"
+                value="hipossuficiência"
+                checked
+              >
+
+              <div>
+
+                <strong>
+                  Declaração de hipossuficiência
+                </strong>
+
+                <small>
+                  Individual por contratante
+                </small>
+
+              </div>
+
+            </label>
+
+
+            <label class="check-card">
+
+              <input
+                type="checkbox"
+                name="documentos"
+                value="contrato"
+                checked
+              >
+
+              <div>
+
+                <strong>
+                  Contrato de honorários
+                </strong>
+
+                <small>
+                  Documento conjunto
+                </small>
+
+              </div>
+
+            </label>
+
+          </div>
+
+
+          <div class="grid grid-2">
+
+            <label>
+
+              Cidade da assinatura
+
+              <input
+                name="cidadeAssinatura"
+                type="text"
+                value="Ibiúna"
+                required
+              >
+
+            </label>
+
+
+            <label>
+
+              Data do documento
+
+              <input
+                name="dataDocumento"
+                type="date"
+                required
+              >
+
+            </label>
+
+          </div>
+
+        </section>
+
+
+        <!-- PRÉVIA -->
+
+        <section
+          class="card preview-card"
+          id="sec-previa"
+        >
+
+          <div class="section-heading">
+
+            <div class="heading-copy">
+
+              <span class="step">
+                05
+              </span>
+
+              <div>
+
+                <small>
+                  ETAPA 05
+                </small>
+
+                <h3>
+                  Prévia da qualificação
+                </h3>
+
+                <p>
+                  Conferência antes da geração.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <button
+              class="btn btn-secondary"
+              type="button"
+              id="previewBtn"
+            >
+              Atualizar prévia
+            </button>
+
+          </div>
+
+
+          <div class="document-preview">
+
+            <div class="preview-ruler">
+
+              <span></span>
+
+              <span></span>
+
+              <span></span>
+
+            </div>
+
+
+            <div
+              id="qualificationPreview"
+              class="preview-box"
+            >
+              Preencha os dados do primeiro contratante para visualizar a qualificação.
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- AÇÕES -->
+
+        <div class="actions">
+
+          <div class="action-note">
+
+            <strong>
+              Pronto para gerar?
+            </strong>
+
+            <small>
+              Confira os dados antes de prosseguir.
+            </small>
+
+          </div>
+
+
+          <div class="action-buttons">
+
+            <button
+              class="btn btn-ghost"
+              type="reset"
+              id="resetBtn"
+            >
+              Limpar formulário
+            </button>
+
+
+            <button
+              class="btn btn-primary"
+              type="submit"
+            >
+              Gerar documentos
+            </button>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </main>
+
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
 
-  <template id="contractorTemplate">
-    <article class="contractor-block">
-      <div class="contractor-header"><div><span class="contractor-badge"></span><h4 class="contractor-title"></h4></div><button type="button" class="remove-contractor" aria-label="Remover contratante">Remover</button></div>
-      <div class="grid grid-4"><label class="span-2">Nome completo<input data-field="nomeCompleto" type="text" required></label><label>Nacionalidade<input data-field="nacionalidade" type="text" value="Brasileiro(a)" required></label><label>Sexo<select data-field="sexo" required><option value="">Selecione</option><option>Masculino</option><option>Feminino</option></select></label></div>
-      <div class="grid grid-4"><label>Estado civil<input data-field="estadoCivil" type="text" required></label><label>Profissão<input data-field="profissao" type="text" required></label><label>RG<input data-field="rg" type="text"></label><label>Órgão expedidor<input data-field="orgaoRg" type="text"></label></div>
-      <div class="grid grid-3"><label>CPF<input data-field="cpf" type="text" inputmode="numeric" required></label><label>Telefone / WhatsApp<input data-field="telefone" type="tel"></label><label>E-mail<input data-field="email" type="email"></label></div>
-      <div class="grid grid-4"><label>CEP<input data-field="cep" type="text" inputmode="numeric"></label><label class="span-2">Logradouro<input data-field="logradouro" type="text"></label><label>Número<input data-field="numero" type="text"></label></div>
-      <div class="grid grid-4"><label>Complemento<input data-field="complemento" type="text"></label><label>Bairro<input data-field="bairro" type="text"></label><label>Cidade<input data-field="cidade" type="text"></label><label>Estado / UF<input data-field="estado" type="text" maxlength="2"></label></div>
-    </article>
-  </template>
 
-  <script src="app.js?v=3"></script>
+<div
+  class="toast"
+  id="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
+
+<!-- MODELO DO CONTRATANTE -->
+
+<template id="contractorTemplate">
+
+  <article class="contractor-block">
+
+    <div class="contractor-header">
+
+      <div>
+
+        <span class="contractor-badge"></span>
+
+        <h4 class="contractor-title"></h4>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="remove-contractor"
+      >
+        Remover
+      </button>
+
+    </div>
+
+
+    <div class="grid grid-4">
+
+      <label class="span-2">
+
+        Nome completo
+
+        <input
+          data-field="nomeCompleto"
+          class="person-name"
+          type="text"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Nacionalidade
+
+        <input
+          data-field="nacionalidade"
+          type="text"
+          value="Brasileiro(a)"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Sexo
+
+        <select
+          data-field="sexo"
+          required
+        >
+
+          <option value="">
+            Selecione
+          </option>
+
+          <option>
+            Masculino
+          </option>
+
+          <option>
+            Feminino
+          </option>
+
+        </select>
+
+      </label>
+
+    </div>
+
+
+    <div class="grid grid-4">
+
+      <label>
+
+        Estado civil
+
+        <input
+          data-field="estadoCivil"
+          type="text"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Profissão
+
+        <input
+          data-field="profissao"
+          type="text"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        RG
+
+        <input
+          data-field="rg"
+          type="text"
+          inputmode="numeric"
+        >
+
+      </label>
+
+
+      <label>
+
+        Órgão expedidor
+
+        <input
+          data-field="orgaoRg"
+          type="text"
+        >
+
+      </label>
+
+    </div>
+
+
+    <div class="grid grid-3">
+
+      <label>
+
+        CPF
+
+        <input
+          data-field="cpf"
+          type="text"
+          inputmode="numeric"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Telefone / WhatsApp
+
+        <input
+          data-field="telefone"
+          type="tel"
+          inputmode="numeric"
+        >
+
+      </label>
+
+
+      <label>
+
+        E-mail
+
+        <input
+          data-field="email"
+          type="email"
+        >
+
+      </label>
+
+    </div>
+
+
+    <div class="grid grid-4">
+
+      <label>
+
+        CEP
+
+        <input
+          data-field="cep"
+          type="text"
+          inputmode="numeric"
+        >
+
+      </label>
+
+
+      <label class="span-2">
+
+        Logradouro
+
+        <input
+          data-field="logradouro"
+          type="text"
+        >
+
+      </label>
+
+
+      <label>
+
+        Número
+
+        <input
+          data-field="numero"
+          type="text"
+        >
+
+      </label>
+
+    </div>
+
+
+    <div class="grid grid-4">
+
+      <label>
+
+        Complemento
+
+        <input
+          data-field="complemento"
+          type="text"
+        >
+
+      </label>
+
+
+      <label>
+
+        Bairro
+
+        <input
+          data-field="bairro"
+          type="text"
+        >
+
+      </label>
+
+
+      <label>
+
+        Cidade
+
+        <input
+          data-field="cidade"
+          type="text"
+        >
+
+      </label>
+
+
+      <label>
+
+        Estado / UF
+
+        <input
+          data-field="estado"
+          type="text"
+          maxlength="2"
+        >
+
+      </label>
+
+    </div>
+
+  </article>
+
+</template>
+
+
+<script src="app.js?v=4"></script>
+
 </body>
+
 </html>
